@@ -1,5 +1,20 @@
 import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 
+/**
+ * Directive to automatically resize a textarea to fit its content.
+ * 
+ * Usage:
+ * Apply the `autoResize` attribute to any <textarea> element in your template:
+ * <textarea autoResize></textarea>
+ * 
+ * @author Ilia Rodikov
+ * @email ilia@zertifier.com
+ * @created 18/11/2014
+ * 
+ * @description
+ * This directive listens for input events on the textarea and dynamically adjusts its height
+ * based on the content to ensure the entire text is visible without scrollbars.
+ */
 @Directive({
   standalone: true,
   selector: 'textarea[autoResize]', // Applies only to <textarea> elements with the `autoResize` attribute
