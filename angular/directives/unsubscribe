@@ -1,0 +1,25 @@
+import { Directive, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+
+/* in your component put:
+* hostDirectives: [UnsubscriveDirective], 
+*  and then use it with observable
+* someObservable.takeUntil($unsub).subscribe()
+*
+*/
+@Directive({
+  standalone: true,
+  selector: 'unsubscribe',
+})
+export class UnsubscribeDirective implements OnDestroy {
+  private unsubscribe: Subject<void> = new Subject<void>();
+
+  get $unsub() {
+    return this.unsubscribe.asObservable();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+}
