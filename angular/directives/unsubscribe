@@ -4,7 +4,8 @@ import { Subject } from 'rxjs';
 /* in your component put:
 * hostDirectives: [UnsubscriveDirective], 
 *  and then use it with observable
-* someObservable.takeUntil($unsub).subscribe()
+* private unsubDirective = inject(UnsubscribeDirective);
+* someObservable.takeUntil(this.unsubDirective.$unsub).subscribe()
 *
 */
 @Directive({
