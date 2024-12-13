@@ -1,9 +1,13 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
-/* in your component put:
+/* This is not needed angular have native solution - takeUntilDestroyed:
+* this.product_service.get().pipe(takeUntilDestroyed()).subscribe(data=>{});
+*
+* 
+* How to use: in your component put:
 * hostDirectives: [UnsubscriveDirective], 
-*  and then use it with observable
+* and then use it with observable
 * private unsubDirective = inject(UnsubscribeDirective);
 * someObservable.takeUntil(this.unsubDirective.$unsub).subscribe()
 *
